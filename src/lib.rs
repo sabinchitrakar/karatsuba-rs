@@ -1,6 +1,15 @@
 use std::str::FromStr;
 use num_bigint::{BigInt};
 
+/// # Examples
+/// ```
+///  use num_bigint::{BigInt};
+///  use std::str::FromStr;
+///  let a = BigInt::from_str("1234567891011333456756333333333333335555555").unwrap();
+///  let b = BigInt::from_str("12345678910113333453456").unwrap();
+///  assert_eq!(BigInt::from(a.clone() * b.clone()).to_string(), multiply(a, b).to_string());
+/// ```
+///
 
 pub fn multiply(x: BigInt, y: BigInt) -> BigInt {
     let x_len = x.to_string().len() as u32;
@@ -29,6 +38,8 @@ pub fn multiply(x: BigInt, y: BigInt) -> BigInt {
 
     return 10_u128.pow((half_x_len + half_y_len) as u32) * ac + 10_u128.pow((half_x_len) as u32) * ad + 10_u128.pow((half_y_len) as u32) * bc + bd;
 }
+
+
 
 pub fn multiply_string(x_str:&str, y_str:&str) -> BigInt {
     let x=BigInt::from_str(x_str).unwrap();
